@@ -13,13 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 Auth::routes();
 
-Route::get('/home', 'Admin\HomeController@index');
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 
 Route::prefix('posts')
     ->middleware('auth')
