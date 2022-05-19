@@ -12,9 +12,19 @@
                             </div>
                         @endif
 
-                        You are logged in {{ Auth::user()->name }}!
+                        {{-- If user is logged --}}
+                        @if (Auth::check())
+                            Welcome {{ Auth::user()->name }}!
+                        @else
+                            Welcome Guest!
+                        @endif
 
                     </div>
+                    @if (Auth::check())
+                        <div class=" card-footer">
+                            <a href="{{ route('posts.index') }}" class="btn btn-dark">Show posts</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
