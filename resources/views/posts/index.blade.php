@@ -16,8 +16,7 @@
                 @forelse ($posts as $post)
                     <tr>
                         <th scope="row">{{ $post->id }}</th>
-                        {{-- @dd($post) --}}
-                        <td><a href="#">{{ $post->title }}</a></td>
+                        <td><a href="{{ route('posts.show', ['id' => $post->id]) }}">{{ $post->title }}</a></td>
                         <td>{{ $post->author }}</td>
                         <td>{{ Str::of($post->text)->limit(40, '...') }}</td>
                         <td>{{ $post->created_at }}</td>
