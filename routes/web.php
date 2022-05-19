@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('guest.index');
+    return view('home');
 });
 
 Auth::routes();
 
 Route::get('/home', 'Admin\HomeController@index');
+
+Route::prefix('posts')
+    ->middleware('auth')
+    ->name('posts.')
+    ->group(function () {
+        Route::get('/', 'PostController@index')->name('index');
+        Route::get('/{id}', 'PostController@show')->name('show');
+});
